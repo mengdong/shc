@@ -21,7 +21,7 @@ import org.apache.spark.sql.{SQLContext, _}
 import org.apache.spark.sql.execution.datasources.hbase._
 import org.apache.spark.{SparkConf, SparkContext}
 
-case class HBaseRecord(
+case class HBaseRecord_(
     col0: String,
     col1: Boolean,
     col2: Double,
@@ -32,10 +32,10 @@ case class HBaseRecord(
     col7: String,
     col8: Byte)
 
-object HBaseRecord {
-  def apply(i: Int): HBaseRecord = {
+object HBaseRecord extends Serializable {
+  def apply(i: Int): HBaseRecord_ = {
     val s = s"""row${"%03d".format(i)}"""
-    HBaseRecord(s,
+    HBaseRecord_(s,
       i % 2 == 0,
       i.toDouble,
       i.toFloat,
@@ -49,7 +49,7 @@ object HBaseRecord {
 
 object HBaseSource {
   val cat = s"""{
-            |"table":{"namespace":"default", "name":"shcExampleTable"},
+            |"table":{"namespace":"default", "name":"/mapr/demo.mapr.com/hbase/test2"},
             |"rowkey":"key",
             |"columns":{
               |"col0":{"cf":"rowkey", "col":"key", "type":"string"},
@@ -105,8 +105,8 @@ object HBaseSource {
     }
 
 
-    val data = (0 to 255).map { i =>
-      HBaseRecord(i)
+    val data = (256 to 512).map { i =>
+      HBaseRecord.apply(i)
     }
 
     sc.parallelize(data).toDF.write.options(
