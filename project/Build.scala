@@ -1,13 +1,10 @@
 import sbt._
 import Keys._
 
-
 object ShcBuild extends Build {
 
-    lazy val root = Project(id = "Shc",
-        base = file(".")) aggregate(core)
+    lazy val root =  project in file(".") aggregate(core) dependsOn(core)
 
-    lazy val core = Project(id = "shcCore",
-        base = file("core"))
+    lazy val core =  project in file("core") 
 
 }

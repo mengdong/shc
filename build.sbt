@@ -41,3 +41,4 @@ libraryDependencies ++= Seq(
   "org.apache.hadoop" % "hadoop-common" % hadoopVersion % "test" exclude("javax.servlet", "servlet-api"),
   "org.apache.hadoop" % "hadoop-common" % hadoopVersion % "test" classifier "tests"
 )
+

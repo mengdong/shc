@@ -1,24 +1,5 @@
-import SonatypeKeys._
 
-sonatypeSettings
-
-name := "hbase"
-
-organization := "org.apache.spark.sql.execution.datasources"
-
-version := "0.1"
-
-crossScalaVersions := Seq("2.10.5", "2.11.8")
-
-scalacOptions ++= Seq(
-  "-deprecation",
-  "-feature",
-  "-language:postfixOps",
-  "-language:implicitConversions",
-  "-language:reflectiveCalls"
-)
-
-org.scalastyle.sbt.ScalastylePlugin.Settings
+name := "core"
 
 resolvers ++= Seq(
   "mapr-repo" at "http://repository.mapr.com/maven"
