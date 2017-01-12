@@ -1,5 +1,8 @@
 
-name := "core"
+// name := "core"
+name := "hbase"
+
+organization := "org.apache.spark.sql.execution.datasources"
 
 resolvers ++= Seq(
   "mapr-repo" at "http://repository.mapr.com/maven"
