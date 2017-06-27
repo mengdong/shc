@@ -10,6 +10,8 @@ version := "0.1"
 
 crossScalaVersions := Seq("2.11.8","2.10.5")
 
+scalaVersion := "2.11.8"
+
 scalacOptions ++= Seq(
   "-deprecation",
   "-feature",
