@@ -161,7 +161,11 @@ private[hbase] class HBaseTableScanRDD(
       var cur: Option[Result] = None
       override def hasNext: Boolean = {
         if (cur.isEmpty) {
-          val r = scanner.next()
+          val r = try {
+            scanner.next()
+          } catch {
+            case e: Exception => null
+          }
           if (r == null) {
             rddResources.release(scanner)
           } else {
