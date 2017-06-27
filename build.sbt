@@ -8,7 +8,7 @@ organization := "org.apache.spark.sql.execution.datasources"
 
 version := "0.1"
 
-crossScalaVersions := Seq("2.10.5", "2.11.8")
+crossScalaVersions := Seq("2.11.8","2.10.5")
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -24,9 +24,9 @@ resolvers ++= Seq(
   "mapr-repo" at "http://repository.mapr.com/maven"
 )
 
-val sparkVersion = "1.6.1"
-val hbaseVersion = "1.1.1-mapr-1602"
-val hadoopVersion = "2.7.0-mapr-1602"
+val sparkVersion = "2.1.0-mapr-1703"
+val hbaseVersion = "1.1.8-mapr-1703"
+val hadoopVersion = "2.7.0-mapr-1703"
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % "provided",
