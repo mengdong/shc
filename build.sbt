@@ -6,7 +6,7 @@ name := "hbase"
 
 organization := "org.apache.spark.sql.execution.datasources"
 
-version := "0.1"
+version := "0.2"
 
 crossScalaVersions := Seq("2.11.8","2.10.5")
 
@@ -35,12 +35,11 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
   "org.apache.hbase" % "hbase-common" % hbaseVersion % "provided",
   "org.apache.hbase" % "hbase-client" % hbaseVersion % "provided",
-  "org.apache.hbase" % "hbase-server" % hbaseVersion % "provided",
-  // for tests
-  "org.scalatest" %% "scalatest" % "2.2.4" % "test",
-  "org.apache.hbase" % "hbase-common" % hbaseVersion % "test" classifier "tests",
-  "org.apache.hbase" % "hbase-server" % hbaseVersion % "test" classifier "tests" exclude("org.mortbay.jetty", "servlet-api-2.5"),
-  "org.apache.hadoop" % "hadoop-common" % hadoopVersion % "test" exclude("javax.servlet", "servlet-api"),
-  "org.apache.hadoop" % "hadoop-common" % hadoopVersion % "test" classifier "tests"
+  "org.apache.hbase" % "hbase-server" % hbaseVersion % "provided"
 )
-
+/*
+assemblyMergeStrategy in assembly := {
+  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case x => MergeStrategy.first
+}
+*/
